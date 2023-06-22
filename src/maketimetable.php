@@ -4,6 +4,7 @@ header('content-type: text/html; charset=utf-8');
 require_once("common.php");
 require_once("student.php");
 
+//読み込んだhtmlファイルを組み立て
 class Maketimetable {
   public function __construct() {}
   public function maketimetable() {
@@ -20,6 +21,7 @@ class Maketimetable {
 }
 
 $mt = new Maketimetable();
+//methodパラメータがmaketimetableの時に表示するっぽい
 if($_GET['method'] === "maketimetable"){
   echo $mt->maketimetable();
 }else{
