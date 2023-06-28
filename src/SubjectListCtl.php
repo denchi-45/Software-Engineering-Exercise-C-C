@@ -1,12 +1,33 @@
 <?php 
+header('content-type: text/html; charset=utf-8');
 
-class SubjectListCtl {
-    public $ids = array(1,2,3,4,5);
-    public function showList(){}
-    
-    public function subjects() {
-        return ids;
+require_once("common.php");
+require_once("student.php");
+
+//読み込んだhtmlファイルを組み立て
+class Maketimetable {
+  public function __construct() {}
+  public function maketimetable() {
+    $doc = load_html("timetable.html");
+
+    $st = new Student();
+    $sbj = $doc->xpath('//*[@id="subjects"]');
+    foreach($st->subjects as $s){
+      $sbj[0]->addChild('li', $s);
     }
+
+    echo $doc->asXML();
+  }
 }
 
+$mt = new Maketimetable();
+//methodパラメータがmaketimetableの時に表示するっぽい
+if($_GET['method'] === "maketimetable"){
+  echo $mt->maketimetable();
+}else{
+  echo "<html>error:unknown_method</html>";
+}
+
+exit();
 ?>
+
