@@ -2,6 +2,7 @@
 header('content-type: text/html; charset=utf-8');
 
 require_once("common.php");
+require_once("subject.php");
 require_once("student.php");
 
 //読み込んだhtmlファイルを組み立て
@@ -11,9 +12,10 @@ class Maketimetable {
     $doc = load_html("timetable.html");
 
     $st = new Student();
+    $sb = new Subject();
     $sbj = $doc->xpath('//*[@id="subjects"]');
     foreach($st->subjects as $s){
-      $sbj[0]->addChild('li', $s);
+      $sbj[0]->addChild('li', $sb->getTitle($s));
     }
 
     echo $doc->asXML();
