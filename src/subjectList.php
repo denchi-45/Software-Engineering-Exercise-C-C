@@ -5,7 +5,7 @@ require_once("common.php");
 require_once("student.php");
 
 //読み込んだhtmlファイルを組み立て
-class Maketimetable {
+class Subjectlist {
   public function __construct() {}
   public function maketimetable() {
     $doc = load_html("timetable.html");
@@ -22,7 +22,7 @@ class Maketimetable {
 
 $mt = new Maketimetable();
 //methodパラメータがmaketimetableの時に表示するっぽい
-if($_GET['method'] === "maketimetable"){
+if($_GET['method'] === "subjectlist"){
   echo $mt->maketimetable();
 }else{
   echo "<html>error:unknown_method</html>";

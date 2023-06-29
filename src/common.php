@@ -1,4 +1,5 @@
 <?php
+//htmlをロードするファイル
 function load_html($file){
   $dom = new DOMDocument();
   $dom->loadHTMLFile($file);
