@@ -22,7 +22,7 @@ class Subjectlist {
 
 $mt = new Maketimetable();
 //methodパラメータがmaketimetableの時に表示するっぽい
-if($_GET['method'] === "maketimetable"){
+if($_GET['method'] === "subjectlist"){
   echo $mt->maketimetable();
 }else{
   echo "<html>error:unknown_method</html>";
