@@ -1,9 +1,8 @@
 <?php
 class Student {
-  //studentのデータを保持
-  public $subjects = array("科目1","科目2","科目3");
-  public function vote() {
-    return "vote:response";
-  }
+    private $ids = array(1,2,3,4,5);
+    public function subjects() {
+        return ids;
+    }
 }
 ?>
