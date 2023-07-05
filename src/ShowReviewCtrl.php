@@ -10,8 +10,18 @@ class ShowReviewCtrl {
   public function show($id){
     $sb = new Subject();
     $st = new Subject();
-    $sb->getTitle($id);
-    $st->getReviewText($id);
+    $title = $sb->getTitle($id);
+    $review = $st->getReviewText($id);
+
+    $doc = load_html("showreview.html");
+    
+    $sbj = $doc->xpath('//*[@id="title"]');
+    $rev = $doc->xpath('//*[@id="review"]');
+    $sbj[0]->addChild('h1',$title);
+    $rev[0]->addChild('p',$review);
+
+    echo $doc->asXML();
+    
 
     
   }
@@ -22,4 +32,10 @@ class ShowReviewCtrl {
 
   }
 }
+
+$mt = new ShowReviewCtrl();
+//methodパラメータがmaketimetableの時に表示するっぽい
+echo $mt->show($_GET['id']);
+
+exit();
 ?>
