@@ -1,5 +1,7 @@
 <?php
 require_once("student.php");
+require_once("subject.php");
+require_once("review.php");
 
 class ShowReviewCtrl {
     
