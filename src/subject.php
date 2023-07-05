@@ -9,7 +9,7 @@ class Subject {
   4 => "プログラミング言語",
   5 => "HCIデザイン"
 );
-  public function getIitle($id){
+  public function getTitle($id){
     $subject_name = $this->subjects[$id];
     return $subject_name;
   }

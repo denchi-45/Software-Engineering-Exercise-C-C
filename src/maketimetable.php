@@ -12,7 +12,7 @@ class Maketimetable {
 
     $st = new Student();
     $sbj = $doc->xpath('//*[@id="subjects"]');
-    foreach($st->subjects as $s){
+    foreach($st->subjects() as $s){
       $sbj[0]->addChild('li', $s);
     }
 
