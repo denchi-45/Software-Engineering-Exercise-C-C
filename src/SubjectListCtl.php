@@ -6,29 +6,27 @@ require_once("subject.php");
 require_once("student.php");
 
 //読み込んだhtmlファイルを組み立て
-class Maketimetable {
+class SubjectListCtrl {
   public function __construct() {}
-  public function maketimetable() {
+  public function showList() {
     $doc = load_html("timetable.html");
 
     $st = new Student();
     $sb = new Subject();
     $sbj = $doc->xpath('//*[@id="subjects"]');
+    
     foreach($st->subjects() as $s){
-      $sbj[0]->addChild('li', $sb->getTitle($s));
-    }
+      $search = "/$sb->getTitle($s)/"
+      $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s)).">".$sb->getTitle($s))."</a>";
 
+    }
     echo $doc->asXML();
   }
 }
 
 $mt = new Maketimetable();
 //methodパラメータがmaketimetableの時に表示するっぽい
-if($_GET['method'] === "maketimetable"){
-  echo $mt->maketimetable();
-}else{
-  echo "<html>error:unknown_method</html>";
-}
+echo $mt->showList();
 
 exit();
 ?>
