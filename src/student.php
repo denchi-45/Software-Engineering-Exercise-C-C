@@ -1,5 +1,5 @@
 <?php
-require_once("./Review.php");
+require_once("./review.php");
 
 class Student {
     private $ids = array(1,2,3,4,5);
@@ -8,7 +8,7 @@ class Student {
 
     public function __construct(){
         foreach ( $this ->ids as $id){
-            $this ->reviews[] = new Review();
+            $this ->reviews[$id] = new Review();
         }
     }
 
@@ -17,15 +17,13 @@ class Student {
     }
     public function getReviewText(int $id) {
         foreach ($this->reviews as $review){
-            if ($review->subjectId == $id){
-                return $review->text;
-            }
+            return $this->reviews[$id]->getText();
         }
     }
     public function setReviewText(int $id, string $text){
         foreach ($this->reviews as $review){
             if ($review->subjectId == $id){
-                $review->text = $text;
+                $this->reviews[$id]->setText($text);
             }
         }
     }
