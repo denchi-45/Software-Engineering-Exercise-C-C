@@ -16,15 +16,16 @@ class SubjectListCtrl {
     $sbj = $doc->xpath('//*[@id="subjects"]');
     
     foreach($st->subjects() as $s){
-      $search = "/$sb->getTitle($s)/"
-      $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s)).">".$sb->getTitle($s))."</a>";
+      // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
+      $sbj[0]->addChild('a', $sb->getTitle($s));
+      $sbj[0]->addAttribute('href',"./showreview.html?subject=".$s);
 
     }
     echo $doc->asXML();
   }
 }
 
-$mt = new Maketimetable();
+$mt = new SubjectListCtrl();
 //methodパラメータがmaketimetableの時に表示するっぽい
 echo $mt->showList();
 
