@@ -27,8 +27,11 @@ class SubjectListCtrl {
 
 $mt = new SubjectListCtrl();
 //methodパラメータがmaketimetableの時に表示するっぽい
-echo $mt->showList();
-
+if($_GET['method'] === "showList"){
+  echo $mt->showList();
+}else{
+  echo "<html>error:unknown_method</html>";
+}
 exit();
 ?>
 
