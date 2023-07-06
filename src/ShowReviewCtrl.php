@@ -9,7 +9,7 @@ class ShowReviewCtrl {
     
   public function show($id){
     $sb = new Subject();
-    $st = new Subject();
+    $st = new Student();
     $title = $sb->getTitle($id);
     $review = $st->getReviewText($id);
 
