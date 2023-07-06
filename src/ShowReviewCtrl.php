@@ -22,7 +22,6 @@ class ShowReviewCtrl {
 
     echo $doc->asXML();
     
-    
   }
   public function edit($id){
 

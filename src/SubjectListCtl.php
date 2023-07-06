@@ -17,7 +17,8 @@ class SubjectListCtrl {
     
     foreach($st->subjects() as $s){
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
-      $tmp = $sbj[0]->addChild('a', $sb->getTitle($s));
+      $li = $sbj[0]->addChild('li');
+      $tmp = $li->addChild('a', $sb->getTitle($s));
       $tmp->addAttribute('href',"./showreview.html?subject=".$s);
 
     }
