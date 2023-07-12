@@ -14,4 +14,13 @@ class Subject {
     return $subject_name;
   }
 }
+
+$test_sub = new Subject();
+
+if($_GET['id'] != ""){
+  echo $test_sub->getTitle($_GET['id']);
+}else{
+  echo "<html>error:unknown_method</html>";
+}
+exit();
 ?>
