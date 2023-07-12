@@ -14,6 +14,4 @@ class Subject {
     return $subject_name;
   }
 }
-
-
 ?>
