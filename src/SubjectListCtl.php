@@ -19,7 +19,7 @@ class SubjectListCtrl {
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
       $li = $sbj[0]->addChild('li');
       $tmp = $li->addChild('a', $sb->getTitle($s));
-      $tmp->addAttribute('href',"./showreview.html?subject=".$s);
+      $tmp->addAttribute('href',"./showreview.php?id=".$s);
 
     }
     echo $doc->asXML();
