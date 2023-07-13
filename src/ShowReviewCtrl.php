@@ -16,10 +16,10 @@ class ShowReviewCtrl {
     $doc = load_html("showreview.html");
     
     $sbj = $doc->xpath('//*[@id="title"]');
-    $rev = $doc->xpath('//*[@id="review"]');
+    $rev = $doc->xpath('//*[@id="text"]');
     
     $sbj[0]->addChild('h1',$title);
-    $rev[0]->addChild('p',$review);
+    $rev[0]->addChild('textarea',$review);
 
     echo $doc->asXML();
     
