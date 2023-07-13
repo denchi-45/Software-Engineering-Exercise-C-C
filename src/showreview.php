@@ -1,6 +1,6 @@
 <html>
     <body>
-        <?php include('.php') ?>
+        <?php include('ShowReviewCtrl.php') ?>
         <div id="title"/>
         <div id="review"/>
     </body>
