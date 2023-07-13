@@ -17,6 +17,7 @@ class ShowReviewCtrl {
     
     $sbj = $doc->xpath('//*[@id="title"]');
     $rev = $doc->xpath('//*[@id="review"]');
+    
     $sbj[0]->addChild('h1',$title);
     $rev[0]->addChild('p',$review);
 
