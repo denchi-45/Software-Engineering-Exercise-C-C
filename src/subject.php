@@ -14,10 +14,4 @@ class Subject {
     return $subject_name;
   }
 }
-
-$mt = new Subject();
-if($_GET['id'] !== ""){
-  echo $mt->getTitle($_GET['id']);
-}
-
 ?>
