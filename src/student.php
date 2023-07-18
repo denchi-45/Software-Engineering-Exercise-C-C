@@ -8,7 +8,7 @@ class Student {
     
     public function __construct(){
         foreach ( $this ->ids as $id){
-            $this ->reviews[$id] = new Review($id,"hello");
+            $this ->reviews[$id] = new Review($id,"レビューがありません");
         }
     }
 
