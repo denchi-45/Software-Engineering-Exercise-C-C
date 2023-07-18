@@ -15,12 +15,12 @@ class Student {
     public function subjects() {
         return $this->ids;
     }
-    public function getReviewText(int $id) {
+    public function getReviewText($id) {
         foreach ($this->reviews as $review){
             return $this->reviews[$id]->getText();
         }
     }
-    public function setReviewText(int $id, string $text){
+    public function setReviewText($id, $text){
         foreach ($this->reviews as $review){
             if ($review->subjectId == $id){
                 $this->reviews[$id]->setText($text);
