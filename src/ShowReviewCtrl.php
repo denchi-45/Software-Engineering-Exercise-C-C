@@ -7,12 +7,16 @@ require_once("subject.php");
 require_once("review.php");
 
 class ShowReviewCtrl {
-    
+
+  public function __construct() {
+    session_start();
+    // $_SESSION['st'] = new Student();
+    // $_SESSION['sb'] = new Subject();
+  }
+
   public function show($id){
-    $sb = new Subject();
-    $st = new Student();
-    $title_content = $sb->getTitle($id);
-    $review_content = $st->getReviewText($id);
+    $title_content = $_SESSION['st']->getTitle($id);
+    $review_content = $_SESSION['sb']->getReviewText($id);
 
     $doc = load_html2("review_display.html");
     $title = $doc->getElementById('title');
@@ -20,6 +24,7 @@ class ShowReviewCtrl {
 
     $review = $doc->getElementById('review');
     $review->nodeValue = $review_content;
+    
 
     // $this->id = $id;
     $html = $doc->saveHTML();
@@ -36,17 +41,23 @@ class ShowReviewCtrl {
     
   }
   public function edit($id){
-    
+    $ed = new EditReviewCtrl();
+    $ed->edit($id);
   }
-  public function close($id){
-    $sb = new Subject();
-    $sb.showList();
+  public function close(){
+    $sb = new SubjectListCtrl();
+    $sb->showList();
   }
 }
 
-// $mt = new ShowReviewCtrl();
+$sr = new ShowReviewCtrl();
 //methodパラメータがmaketimetableの時に表示するっぽい
-// echo $mt->show($_GET['id']);
+if($_GET['method'] == "close"){
+  $sr->close();
+}else if($_GET['id']){
+  $sr->edit($_GET['id']);
+}
+
 
 // exit();
 ?>

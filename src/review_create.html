@@ -9,12 +9,11 @@
         <h1 id="title" />
         <form action="EditReviewCtrl.php?method=save" method="post">
             <textarea cols="100" rows="10" name="review" placeholder=""></textarea>
-            <input type="submit" value="保存">
-            <a href="EditReviewCtrl.php?method=cancel">Cancel</a>
+            <input type="submit" value="save">
         </form>
-        <!-- <form action="EditReviewCtrl.php?method=cancel" method="get">
-            <input type="submit">Create</input>
-        </form> -->
+        <form action="EditReviewCtrl.php/?method=cancel" method="get">
+            <input type="submit">
+        </form>
         
     </body>
 </html>

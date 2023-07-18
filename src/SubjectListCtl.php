@@ -9,26 +9,28 @@ require_once("EditReviewCtrl.php");
 require_once("ShowReviewCtrl.php");
 //読み込んだhtmlファイルを組み立て
 class SubjectListCtrl {
-  private $st;
-  private $sb;
+  // private $st;
+  // private $sb;
   public function __construct() {
-    $this->st = new Student();
-    $this->sb = new Subject();
+    session_start();
+    $_SESSION['st'] = new Student();
+    $_SESSION['sb'] = new Subject();
+    // $this->st = new Student();
+    // $this->sb = new Subject();
   }
   public function showList() {
     $doc = load_html("./subject_display.html");
     $sbj = $doc->xpath('//*[@id="subjects"]');
     
-    foreach($this->st->subjects() as $s){
+    foreach($_SESSION['st']->subjects() as $s){
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
       $li = $sbj[0]->addChild('li');
-      print($s);
-      if($this->st->getReviewText($s) === "hello"){
-        $tmp = $li->addChild('a', $this->sb->getTitle($s));
+      $tmp = $li->addChild('a', $_SESSION['sb']->getTitle($s));
+      if($_SESSION['st']->getReviewText($s) === "hello"){
         $tmp->addAttribute('href',"./SubjectListCtl.php?new_id=".$s);
       }else{
         $tmp->addAttribute('href',"./SubjectListCtl.php?show_id=".$s);
-        $tmp = $li->addChild('a', "{$this->sb->getTitle($s)} レビューあり");
+        $txt = $tmp->addChild('p',"with reviews");
       }
       
 
@@ -45,10 +47,22 @@ class SubjectListCtrl {
       // $doc = load_html2("review_display.html");
       $SRC = new ShowReviewCtrl();
       $SRC->show($id);
+      // $subject = $SRC.getTitle($id);
+      // $review = $SRC.getReviewText($id);
+
+      // $title = $doc->getElementById('title');
+      // $title->nodeValue = $review;
+
+      // $title = $doc->getElementById('review');
+      // $title->nodeValue = $review;
+
+      // $html = $doc->saveHTML();
+      // echo $html;
   }
 }
 
 $mt = new SubjectListCtrl();
+
 // $mt->showList();
 
 // methodパラメータがmaketimetableの時に表示するっぽい

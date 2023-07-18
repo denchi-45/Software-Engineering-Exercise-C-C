@@ -10,7 +10,11 @@ require_once("review.php");
 class EditReviewCtrl {
   private $id;
   // private $st = new Student();
-  public function __construct() {}
+  public function __construct() {
+    session_start();
+    // $_SESSION['st'] = new Student();
+    // $_SESSION['sb'] = new Subject();
+  }
   // public function showList() {
   //   $doc = load_html("timetable.html");
 
@@ -27,19 +31,18 @@ class EditReviewCtrl {
   //   }
   //   echo $doc->asXML();
   // }
+  
   public function new($id){
-    $sb = new Subject();
     $doc = load_html2("review_create.html");
     $title = $doc->getElementById('title');
-    $title->nodeValue = $sb->getTitle($id);
+    $title->nodeValue = $_SESSION['sb']->getTitle($id);
     $this->id = $id;
     $html = $doc->saveHTML();
     echo $html;
   }
 
   public function save($id,$text){
-    $st = new Student();
-    $st->setReviewText($id,$text);
+    $_SESSION['st']->setReviewText($id,$text);
   }
 
   public function cancel(){
@@ -49,19 +52,29 @@ class EditReviewCtrl {
 	header( "Location: ./SubjectListCtrl.php/?method=showList" );
   }
 
+  public function edit($id){
+    $doc = load_html2("review_create.html");
+    $title = $doc->getElementById('title');
+    $title->nodeValue = $_SESSION['sb']->getTitle($id);
+    $this->id = $id;
+    $html = $doc->saveHTML();
+    echo $html;
+  }
 }
 
-$ERB = new EditReviewCtrl();
-// //methodパラメータがmaketimetableの時に表示するっぽい
-if($_GET['method'] === "new"){
-  // echo $ERB->new();
-}else if($_GET['method'] == "save"){
+// $ERB = new EditReviewCtrl();
+// // //methodパラメータがmaketimetableの時に表示するっぽい
+// if($_GET['method'] === "new"){
+//   // echo $ERB->new();
+// }else 
+if($_GET['method'] == "save"){
   $ERB->save($this->id,$_POST["review"]);
-}else if($_GET['method'] == "cancel"){
-  $ERB->cancel();
-}else{
-  echo "<html>error:unknown_method</html>";
 }
+// else if($_GET['method'] == "cancel"){
+//   $ERB->cancel();
+// }else{
+//   echo "<html>error:unknown_method</html>";
+// }
 // exit();
 ?>
 
