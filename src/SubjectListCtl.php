@@ -25,10 +25,10 @@ class SubjectListCtrl {
       $li = $sbj[0]->addChild('li');
       $tmp = $li->addChild('a', $this->sb->getTitle($s));
       if($this->st->getReviewText($s) === "hello"){
-        $tmp->addAttribute('href',"./ShowListCtl.php?new_id=".$s);
+        $tmp->addAttribute('href',"./SubjectListCtl.php?new_id=".$s);
       }else{
-        $tmp->addAttribute('href',"./ShowListCtl.php?show_id=".$s);
-        $txt = $tmp->addChild('p',"レビューあり")
+        $tmp->addAttribute('href',"./SubjectListCtl.php?show_id=".$s);
+        $txt = $tmp->addChild('p',"with reviews");
       }
       
 
@@ -60,7 +60,7 @@ class SubjectListCtrl {
   public function show($id){
       // $doc = load_html2("review_display.html");
       $SRC = new ShowReviewCtrl();
-      $SRC->show($id)
+      $SRC->show($id);
       // $subject = $SRC.getTitle($id);
       // $review = $SRC.getReviewText($id);
 

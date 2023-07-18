@@ -39,8 +39,8 @@ class ShowReviewCtrl {
     
   }
   public function close($id){
-    $sb = new Subject();
-    $sb.showList();
+    $sb = new SubjectListCtrl();
+    $sb->showList();
   }
 }
 
