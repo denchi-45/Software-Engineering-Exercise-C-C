@@ -1,6 +1,13 @@
-<html>
+<!--科目一覧表示画面-->
+<html lang="ja">
+  <?php include('SubjectListCtl.php') ?>
+  <head>
+    <meta charset="utf-8" />
+    <title>科目一覧表示</title>
+  </head>
   <body>
-    <?php include('SubjectListCtl.php') ?>
-      <ul id="subjects" />
+    <h1>履修科目一覧</h1>
+    <ul id="subjects">
+    </ul>
   </body>
 </html>
