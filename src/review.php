@@ -1,6 +1,6 @@
 <?php
 class Review {
-    private $subjectid;
+    public $subjectid;
     private $text;
     public function __construct($subjectid,$text) {
         $this->subjectid = $subjectid;

@@ -13,12 +13,21 @@ class SubjectListCtrl {
   // private $st;
   // private $sb;
   public function __construct() {
-    $_SESSION['st'] = new Student();
-    $_SESSION['sb'] = new Subject();
+    if(!isset($_SESSION['st'])){
+      $st = new Student();
+      $_SESSION['st'] = serialize($st);
+    }
+    if(!isset($_SESSION['sb'])){
+      $sb = new Subject();
+      $_SESSION['sb'] = serialize($sb);
+    }
+   
+  
     // $this->st = new Student();
     // $this->sb = new Subject();
   }
   public function showList() {
+    
     $doc = load_html("./subject_display.html");
     $sbj = $doc->xpath('//*[@id="subjects"]');
     

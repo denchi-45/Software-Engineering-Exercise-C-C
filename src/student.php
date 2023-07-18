@@ -7,8 +7,11 @@ class Student {
     private $studentNo = 1;
     
     public function __construct(){
-        foreach ( $this->ids as $id){
-            $this ->reviews[$id] = new Review($id,"hello");
+        foreach($this->ids as $id){
+            // echo "11111111111111111111111111111111111";
+           
+            $this->reviews[$id] = new Review($id,"hello");
+            // echo $this->reviews[$id]->getText();
         }
     }
 
@@ -26,17 +29,20 @@ class Student {
     public function setReviewText($id, $text){
         foreach ($this->reviews as $review){
             if ($review->subjectId == $id){
-                $this->reviews[$id]->setText($text);
+                // echo $id;
+                // echo "11111111111111111111111111111111111111111111111111111111111111";
+                // echo $this->reviews[$id];
+                // echo $this->reviews[$id]->getText();
             }
         }
     }
 }
 
-function console_log($data){
-    echo '<script>';
-    echo 'console.log('.json_encode($data).')';
-    echo '</script>';
-}
+// function console_log($data){
+//     echo '<script>';
+//     echo 'console.log('.json_encode($data).')';
+//     echo '</script>';
+// }
 
 // $test_student = new Student();
 
