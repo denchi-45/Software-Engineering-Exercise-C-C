@@ -9,14 +9,14 @@ require_once("student.php");
 // require_once("ShowReviewCtrl.php");
 //読み込んだhtmlファイルを組み立て
 class SubjectListCtrl {
-  private $st;
-  private $sb;
+  // private $st;
+  // private $sb;
   public function __construct() {
     session_start();
     $_SESSION['st'] = new Student();
-    $_SESSION['sb'] = new Subject()
-    $this->st = new Student();
-    $this->sb = new Subject();
+    $_SESSION['sb'] = new Subject();
+    // $this->st = new Student();
+    // $this->sb = new Subject();
   }
   public function showList() {
     // echo "EHHHHH";
@@ -26,8 +26,8 @@ class SubjectListCtrl {
     foreach($this->st->subjects() as $s){
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
       $li = $sbj[0]->addChild('li');
-      $tmp = $li->addChild('a', $this->sb->getTitle($s));
-      if($this->st->getReviewText($s) === "hello"){
+      $tmp = $li->addChild('a', $_SESSION['sb']->getTitle($s));
+      if($_SESSION['st']->getReviewText($s) === "hello"){
         $tmp->addAttribute('href',"./SubjectListCtl.php?new_id=".$s);
       }else{
         $tmp->addAttribute('href',"./SubjectListCtl.php?show_id=".$s);

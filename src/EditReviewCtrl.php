@@ -10,7 +10,11 @@ require_once("review.php");
 class EditReviewCtrl {
   private $id;
   // private $st = new Student();
-  public function __construct() {}
+  public function __construct() {
+    session_start();
+    // $_SESSION['st'] = new Student();
+    // $_SESSION['sb'] = new Subject();
+  }
   // public function showList() {
   //   $doc = load_html("timetable.html");
 
@@ -27,11 +31,11 @@ class EditReviewCtrl {
   //   }
   //   echo $doc->asXML();
   // }
+  
   public function new($id){
-    $sb = new Subject();
     $doc = load_html2("review_create.html");
     $title = $doc->getElementById('title');
-    $title->nodeValue = $sb->getTitle($id);
+    $title->nodeValue = $_SESSION['sb']->getTitle($id);
     $this->id = $id;
     $html = $doc->saveHTML();
     echo $html;
@@ -44,8 +48,7 @@ class EditReviewCtrl {
   }
 
   public function save($id,$text){
-    $st = new Student();
-    $st->setReviewText($id,$text);
+    $_SESSION['st']->setReviewText($id,$text);
   }
 
   public function cancel(){
@@ -56,10 +59,9 @@ class EditReviewCtrl {
   }
 
   public function edit($id){
-    $sb = new Subject();
     $doc = load_html2("review_create.html");
     $title = $doc->getElementById('title');
-    $title->nodeValue = $sb->getTitle($id);
+    $title->nodeValue = $_SESSION['sb']->getTitle($id);
     $this->id = $id;
     $html = $doc->saveHTML();
     echo $html;
