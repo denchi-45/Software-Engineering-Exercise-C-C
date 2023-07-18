@@ -7,10 +7,6 @@ class Review {
         $this->text = $text;
     }
     
-    // public function __construct() {
-        // $this->subjectid = $id;
-        // $this->text = $t;
-    // }
     public function setText($string){
         $this->text = $string;
 

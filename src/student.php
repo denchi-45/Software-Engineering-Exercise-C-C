@@ -20,6 +20,7 @@ class Student {
         //     return $this->reviews[$id]->getText();
             
         // }
+        // $tmp = (int) $id;
         return $this->reviews[$id]->getText();
     }
     public function setReviewText($id, $text){
@@ -37,7 +38,7 @@ class Student {
 //     echo '</script>';
 // }
 
-$test_student = new Student();
+//$test_student = new Student();
 
 // if($test_student->subjects() == array(1,2,3,4,5)){
 //     console_log("ok");

@@ -1,18 +1,20 @@
 <!--レビュー作成画面-->
-<html lang="ja">
+<html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8">
         <title>--レビュー作成画面</title>
     </head>
     <body>
+        <h1>レビュー作成画面</h1>
         <h1 id="title" />
-        <form action="EditReviewCtrl.php/?method=save" method="post">
-            <textarea cols="100" rows="10" name="review" placeholder="ここにレビューを入力してください"></textarea>
+        <form action="EditReviewCtrl.php?method=save" method="post">
+            <textarea cols="100" rows="10" name="review" placeholder=""></textarea>
             <input type="submit" value="保存">
+            <a href="EditReviewCtrl.php?method=cancel">Cancel</a>
         </form>
-        <form action="EditReviewCtrl.php/?method=cancel" method="get">
-            <button type="submit">Go to Example.com</button>
-        </form>
+        <!-- <form action="EditReviewCtrl.php?method=cancel" method="get">
+            <input type="submit">Create</input>
+        </form> -->
         
     </body>
 </html>

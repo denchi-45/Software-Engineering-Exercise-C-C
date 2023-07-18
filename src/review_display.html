@@ -6,12 +6,13 @@
     </head>
     <body>
         <h1 id="title">レビュー：</h1>
+        <!-- <h1>hello</h1> -->
         <form action="EditReviewCtrl.php/?method=save" method="post">
-            <textarea cols="100" rows="10" name="review" id="review" placeholder="ここにレビューを入力してください"></textarea>
-            <input type="submit" value="保存">
+            <textarea cols="100" rows="10" name="review" id="review" placeholder=""></textarea>
+            <input type="submit" value="Save">
         </form>
         <form action="./ShowReviewCtrl.php?method=showList" method="get">
-            <input type="submit" value="閉じる">
+            <input type="submit" value="Close">
         </form>
     </body>
 </html>

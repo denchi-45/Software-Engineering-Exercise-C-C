@@ -35,17 +35,11 @@ class EditReviewCtrl {
     $this->id = $id;
     $html = $doc->saveHTML();
     echo $html;
-    // $title_tag = $doc->xpath('//*[@id="title"]');
-    // $title_tag->get
-    // $title_tag[0]->addChild('h1',$sb->getTitle($id));
-    
-    // echo $doc->asXML();
-    // $this->st->getTitle()
   }
 
   public function save($id,$text){
     $st = new Student();
-    $st.setReviewText($id,$text);
+    $st->setReviewText($id,$text);
   }
 
   public function cancel(){
@@ -57,17 +51,17 @@ class EditReviewCtrl {
 
 }
 
-// $ERB = new EditReviewCtrl();
-// // //methodパラメータがmaketimetableの時に表示するっぽい
-// if($_GET['method'] === "new"){
-//   // echo $ERB->new();
-// }else if($_GET['method'] == "save"){
-//   $ERB->save($this->id,$_POST["review"]);
-// }else if($_GET['method'] == "cancel"){
-//   $ERB->cancel();
-// }else{
-//   echo "<html>error:unknown_method</html>";
-// }
+$ERB = new EditReviewCtrl();
+// //methodパラメータがmaketimetableの時に表示するっぽい
+if($_GET['method'] === "new"){
+  // echo $ERB->new();
+}else if($_GET['method'] == "save"){
+  $ERB->save($this->id,$_POST["review"]);
+}else if($_GET['method'] == "cancel"){
+  $ERB->cancel();
+}else{
+  echo "<html>error:unknown_method</html>";
+}
 // exit();
 ?>
 
