@@ -2,8 +2,8 @@
 //htmlをロードするファイル
 function load_html2($file){
   $dom = new DOMDocument();
-  $dom->loadHTMLFile($file);
-  return $dom
+  $dom->loadHTML(file_get_contents($file));
+  return $dom;
 }
 
 ?>

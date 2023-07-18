@@ -31,16 +31,16 @@ class Student {
     }
 }
 
-function console_log($data){
-    echo '<script>';
-    echo 'console.log('.json_encode($data).')';
-    echo '</script>';
-}
+// function console_log($data){
+//     echo '<script>';
+//     echo 'console.log('.json_encode($data).')';
+//     echo '</script>';
+// }
 
 $test_student = new Student();
 
-if($test_student->subjects() == array(1,2,3,4,5)){
-    console_log("ok");
-}
+// if($test_student->subjects() == array(1,2,3,4,5)){
+//     console_log("ok");
+// }
 
 ?>
