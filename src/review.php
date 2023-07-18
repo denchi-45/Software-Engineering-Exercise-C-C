@@ -1,9 +1,9 @@
 <?php
 class Review {
-    private $subjectid;
+    public $subjectId;
     private $text;
     public function __construct($subjectid,$text) {
-        $this->subjectid = $subjectid;
+        $this->subjectId = $subjectid;
         $this->text = $text;
     }
     
