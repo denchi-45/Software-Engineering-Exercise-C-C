@@ -7,7 +7,7 @@ require_once("subject.php");
 require_once("review.php");
 
 class ShowReviewCtrl {
-    
+
   public function show($id){
     $sb = new Subject();
     $st = new Student();
@@ -20,6 +20,7 @@ class ShowReviewCtrl {
 
     $review = $doc->getElementById('review');
     $review->nodeValue = $review_content;
+    
 
     // $this->id = $id;
     $html = $doc->saveHTML();
@@ -36,17 +37,23 @@ class ShowReviewCtrl {
     
   }
   public function edit($id){
-    
+    $ed = new EditReviewCtrl();
+    $ed->edit($id);
   }
-  public function close($id){
+  public function close(){
     $sb = new SubjectListCtrl();
     $sb->showList();
   }
 }
 
-$mt = new ShowReviewCtrl();
+$sr = new ShowReviewCtrl();
 //methodパラメータがmaketimetableの時に表示するっぽい
-echo $mt->show($_GET['id']);
+if($_GET['method'] == "close"){
+  $sr->close();
+}else if($_GET['id']){
+  $sr->edit($_GET['id']);
+}
 
-exit();
+
+// exit();
 ?>

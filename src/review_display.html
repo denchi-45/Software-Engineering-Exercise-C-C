@@ -6,6 +6,11 @@
     </head>
     <body>
         <h1 id="title">レビュー：</h1>
-        <textarea cols="100" rows="10" id="review"></textarea>
+        <form action="ShowReviewCtrl.php" method="post">
+            <textarea cols="100" rows="10" name="review" id="review"></textarea><br>
+            <input type="hidden" name="id" value="1">
+            <input type="submit" value="edit">
+        </form>
     </body>
+    <a href="./SubjectList.php/?method=showList">close</a>
 </html>

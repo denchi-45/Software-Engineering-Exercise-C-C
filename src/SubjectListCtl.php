@@ -12,6 +12,9 @@ class SubjectListCtrl {
   private $st;
   private $sb;
   public function __construct() {
+    session_start();
+    $_SESSION['st'] = new Student();
+    $_SESSION['sb'] = new Subject()
     $this->st = new Student();
     $this->sb = new Subject();
   }
@@ -76,6 +79,7 @@ class SubjectListCtrl {
 }
 
 $mt = new SubjectListCtrl();
+
 // $mt->showList();
 
 // methodパラメータがmaketimetableの時に表示するっぽい

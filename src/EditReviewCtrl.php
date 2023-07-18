@@ -55,15 +55,26 @@ class EditReviewCtrl {
 	header( "Location: ./SubjectListCtrl.php/?method=showList" );
   }
 
+  public function edit($id){
+    $sb = new Subject();
+    $doc = load_html2("review_create.html");
+    $title = $doc->getElementById('title');
+    $title->nodeValue = $sb->getTitle($id);
+    $this->id = $id;
+    $html = $doc->saveHTML();
+    echo $html;
+  }
 }
 
 // $ERB = new EditReviewCtrl();
 // // //methodパラメータがmaketimetableの時に表示するっぽい
 // if($_GET['method'] === "new"){
 //   // echo $ERB->new();
-// }else if($_GET['method'] == "save"){
-//   $ERB->save($this->id,$_POST["review"]);
-// }else if($_GET['method'] == "cancel"){
+// }else 
+if($_GET['method'] == "save"){
+  $ERB->save($this->id,$_POST["review"]);
+}
+// else if($_GET['method'] == "cancel"){
 //   $ERB->cancel();
 // }else{
 //   echo "<html>error:unknown_method</html>";

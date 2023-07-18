@@ -7,7 +7,7 @@ class Student {
     private $studentNo = 1;
     
     public function __construct(){
-        foreach ( $this ->ids as $id){
+        foreach ( $this->ids as $id){
             $this ->reviews[$id] = new Review($id,"hello");
         }
     }
@@ -31,16 +31,20 @@ class Student {
     }
 }
 
-// function console_log($data){
-//     echo '<script>';
-//     echo 'console.log('.json_encode($data).')';
-//     echo '</script>';
-// }
+function console_log($data){
+    echo '<script>';
+    echo 'console.log('.json_encode($data).')';
+    echo '</script>';
+}
 
-//$test_student = new Student();
+$test_student = new Student();
 
-// if($test_student->subjects() == array(1,2,3,4,5)){
-//     console_log("ok");
-// }
+if($test_student->subjects() == array(1,2,3,4,5)){
+    console_log("ok");
+}
+
+foreach($test_student->subjects() as $id){
+    console_log($test_student->getReviewText($id));
+}
 
 ?>
