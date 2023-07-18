@@ -1,4 +1,5 @@
 <?php 
+session_start();
 header('content-type: text/html; charset=utf-8');
 
 require_once("common.php");
@@ -12,7 +13,6 @@ class SubjectListCtrl {
   // private $st;
   // private $sb;
   public function __construct() {
-    session_start();
     $_SESSION['st'] = new Student();
     $_SESSION['sb'] = new Subject();
     // $this->st = new Student();
@@ -23,7 +23,7 @@ class SubjectListCtrl {
     $doc = load_html("./subject_display.html");
     $sbj = $doc->xpath('//*[@id="subjects"]');
     
-    foreach($this->st->subjects() as $s){
+    foreach($_SESSION['st']->subjects() as $s){
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
       $li = $sbj[0]->addChild('li');
       $tmp = $li->addChild('a', $_SESSION['sb']->getTitle($s));
