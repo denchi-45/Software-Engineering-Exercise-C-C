@@ -1,5 +1,5 @@
 <?php
-class Subject {
+class Subject{
   //studentのデータを保持
   public $subjects = array(
 

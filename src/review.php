@@ -1,7 +1,11 @@
 <?php
 class Review {
     private $subjectid;
-    private $text;
+    private $text = "review";
+    public function __construct() {
+        // $this->subjectid = $id;
+        // $this->text = $t;
+    }
     public function setText($string){
         $this->text = $string;
 

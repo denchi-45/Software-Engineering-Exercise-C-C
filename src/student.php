@@ -5,7 +5,7 @@ class Student {
     private $ids = array(1,2,3,4,5);
     private $reviews = array();
     private $studentNo = 1;
-
+    
     public function __construct(){
         foreach ( $this ->ids as $id){
             $this ->reviews[$id] = new Review();
@@ -16,9 +16,11 @@ class Student {
         return $this->ids;
     }
     public function getReviewText($id) {
-        foreach ($this->reviews as $review){
-            return $this->reviews[$id]->getText();
-        }
+        // foreach ($this->reviews as $review){
+        //     return $this->reviews[$id]->getText();
+            
+        // }
+        return $this->reviews[$id]->getText();
     }
     public function setReviewText($id, $text){
         foreach ($this->reviews as $review){
