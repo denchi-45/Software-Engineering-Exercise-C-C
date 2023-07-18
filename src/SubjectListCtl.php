@@ -5,11 +5,11 @@ require_once("common.php");
 require_once("common2.php");
 require_once("subject.php");
 require_once("student.php");
-// require_once("EditReviewCtrl.php");
+require_once("EditReviewCtrl.php");
 // require_once("ShowReviewCtrl.php");
 //読み込んだhtmlファイルを組み立て
 class SubjectListCtrl {
-  // public function __construct() {}
+  public function __construct() {}
   public function showList() {
     // echo "EHHHHH";
     $doc = load_html("./subject_display.html");
@@ -22,7 +22,8 @@ class SubjectListCtrl {
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
       $li = $sbj[0]->addChild('li');
       $tmp = $li->addChild('a', $sb->getTitle($s));
-      $tmp->addAttribute('href',"./showreview.php?id=".$s);
+      // $tmp->addAttribute('href',"./showreview.php?id=".$s);
+      $tmp->addAttribute('href',"./ShowReviewCtrl.php?id=".$s);
 
     }
     echo $doc->asXML();

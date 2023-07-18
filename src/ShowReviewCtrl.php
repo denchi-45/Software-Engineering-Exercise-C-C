@@ -48,5 +48,5 @@ $mt = new ShowReviewCtrl();
 //methodパラメータがmaketimetableの時に表示するっぽい
 echo $mt->show($_GET['id']);
 
-exit();
+// exit();
 ?>

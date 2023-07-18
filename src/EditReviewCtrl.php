@@ -6,7 +6,7 @@ require_once("student.php");
 require_once("common2.php");
 require_once("review.php");
 
-//読み込んだhtmlファイルを組み立て
+// 読み込んだhtmlファイルを組み立て
 class EditReviewCtrl {
   private $id;
   // private $st = new Student();
@@ -68,6 +68,6 @@ class EditReviewCtrl {
 // }else{
 //   echo "<html>error:unknown_method</html>";
 // }
-exit();
+// exit();
 ?>
 
