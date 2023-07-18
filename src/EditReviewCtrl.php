@@ -29,7 +29,7 @@ class EditReviewCtrl {
     
     $ID = $doc->getElementById('id');
     echo "in EditReviewCtrl _new<br>";
-    $ID->setAttribute('value',$id);
+    // $ID->setAttribute('value',$id);
     echo "in EditReviewCtrl _new<br>";
     $html = $doc->saveHTML();
     echo $html;

@@ -15,11 +15,11 @@ require_once("ShowReviewCtrl.php");
 class SubjectListCtrl {
   public function __construct() {
     //一番最初にこれやらなあかんかも
-      $st = new Student();
-      $_SESSION['st'] = serialize($st);
+      // $st = new Student();
+      // $_SESSION['st'] = serialize($st);
 
-      $sb = new Subject();
-      $_SESSION['sb'] = serialize($sb);
+      // $sb = new Subject();
+      // $_SESSION['sb'] = serialize($sb);
 
     if(!isset($_SESSION['st'])){
       $st = new Student();
