@@ -1,5 +1,8 @@
 <?php 
-session_start();
+if(!isset($_SESSION)){
+  session_start(); 
+}
+error_reporting(0);
 header('content-type: text/html; charset=utf-8');
 
 require_once("common.php");
@@ -12,11 +15,11 @@ require_once("ShowReviewCtrl.php");
 class SubjectListCtrl {
   public function __construct() {
     //一番最初にこれやらなあかんかも
-      // $st = new Student();
-      // $_SESSION['st'] = serialize($st);
+      $st = new Student();
+      $_SESSION['st'] = serialize($st);
 
-      // $sb = new Subject();
-      // $_SESSION['sb'] = serialize($sb);
+      $sb = new Subject();
+      $_SESSION['sb'] = serialize($sb);
 
     if(!isset($_SESSION['st'])){
       $st = new Student();
@@ -48,9 +51,10 @@ class SubjectListCtrl {
     echo $doc->asXML();
   }
 
-  public function new($id){
+  public function _new($id) {
+    echo "in _new<br>";
     $erc = new EditReviewCtrl();
-    $erc->new($id);
+    $erc->_new($id);
   }
 
   public function show($id){
@@ -65,8 +69,8 @@ if($_GET['method'] == "showList"){
   echo $mt->showList();
 }else if($_GET['show_id']){
   $mt->show($_GET['show_id']);
-}else if($_GET['new_id']){
-  $mt->new($_GET['new_id']);
+}else if($_GET['new_id'] != ""){
+  $mt->_new($_GET['new_id']);
 }else{
   echo "<html>error:unknown_method</html>";
 }

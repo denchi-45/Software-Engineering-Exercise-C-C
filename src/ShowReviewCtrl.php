@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)){
+  session_start(); 
+}
+error_reporting(0);
 header('content-type: text/html; charset=utf-8');
 // require_once("common.php");
 require_once("common2.php");
@@ -9,7 +13,7 @@ require_once("review.php");
 class ShowReviewCtrl {
 
   public function __construct() {
-    session_start();
+    
   }
 
   public function show($id){

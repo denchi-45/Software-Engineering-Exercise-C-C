@@ -1,4 +1,8 @@
-<?php 
+<?php
+if(!isset($_SESSION)){
+  session_start(); 
+}
+error_reporting(0);
 header('content-type: text/html; charset=utf-8');
 
 require_once("subject.php");
@@ -10,17 +14,23 @@ require_once("review.php");
 class EditReviewCtrl {
   public $id;
   public function __construct() {
-    session_start();
+    
   }
 
-  public function new($id){
+  public function _new($id){
+    echo "in EditReviewCtrl _new<br>";
     $sb = unserialize($_SESSION['sb']);
+    echo "in EditReviewCtrl _new<br>";
     $doc = load_html2("review_create.html");
+    echo "in EditReviewCtrl _new<br>";
     $title = $doc->getElementById('title');
+    echo "in EditReviewCtrl _new<br>";
     $title->nodeValue = $sb->getTitle($id);
+    
     $ID = $doc->getElementById('id');
+    echo "in EditReviewCtrl _new<br>";
     $ID->setAttribute('value',$id);
-
+    echo "in EditReviewCtrl _new<br>";
     $html = $doc->saveHTML();
     echo $html;
   }
@@ -37,10 +47,10 @@ class EditReviewCtrl {
   }
 
   public function cancel(){
-     // ステータスコードを出力
-	http_response_code( 301 );
-	// リダイレクト
-	header( "Location: ./SubjectListCtl.php?method=showList" );
+    // ステータスコードを出力
+	  http_response_code( 301 );
+	  // リダイレクト
+	  header( "Location: ./SubjectListCtl.php?method=showList" );
   }
 
   public function edit($id){

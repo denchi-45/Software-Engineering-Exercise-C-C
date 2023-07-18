@@ -2,10 +2,10 @@
 <html>
     <body>
         <h1>Create Review</h1>
-        <h1 id="title" />
+        <h1 id="title"></h1>
         <form action="EditReviewCtrl.php?method=save" method="post">
             <textarea cols="100" rows="10" name="review" placeholder=""></textarea>
-            <input type="hidden" id="id" name="id">
+            <input type="hidden" id="ids" name="id" value="" >
             <input type="submit" value="save">
         </form>
         <a href="EditReviewCtrl.php?method=cancel">close</a>
