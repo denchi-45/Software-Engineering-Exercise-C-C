@@ -1,8 +1,9 @@
 <?php 
-header('content-type: text/html; charset=utf-8');
+
+//header('content-type: text/html; charset=utf-8');
 
 require_once("common.php");
-require_once("common2.php")
+require_once("common2.php");
 require_once("subject.php");
 require_once("student.php");
 require_once("EditReviewCtrl.php");
@@ -49,19 +50,21 @@ class SubjectListCtrl {
   }
 
   public function show($id){
-      $doc = load_html2("review_display.html")
+      $doc = load_html2("ShowReview.html");
       $SRC = new ShowReviewCtrl();
-      $subject = $SRC.getTitle($id);
-      $review = $SRC.getReviewText($id);
 
-      $title = $doc->getElementById('title');
-      $title->nodeValue = $review;
+      $SRC->show($id);
+      // $subject = $SRC->getTitle($id);
+      // $review = $SRC->getReviewText($id);
 
-      $title = $doc->getElementById('review');
-      $title->nodeValue = $review;
+      // $title = $doc->getElementById('title');
+      // $title->nodeValue = $review;
 
-      $html = $doc->saveHTML();
-      echo $html
+      // $title = $doc->getElementById('review');
+      // $title->nodeValue = $review;
+
+      // $html = $doc->saveHTML();
+      // echo $html;
   }
 }
 
@@ -70,10 +73,9 @@ $mt = new SubjectListCtrl();
 if($_GET['method'] === "showList"){
   echo $mt->showList();
 }else if($_GET['id']){
-  $mt.show($_GET["id"])
+  $mt->show($_GET["id"]);
 }else{
   echo "<html>error:unknown_method</html>";
 }
 exit();
 ?>
-

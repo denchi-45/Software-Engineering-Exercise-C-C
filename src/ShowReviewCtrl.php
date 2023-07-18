@@ -1,5 +1,6 @@
 <?php
-header('content-type: text/html; charset=utf-8');
+
+//header('content-type: text/html; charset=utf-8');
 require_once("common.php");
 require_once("student.php");
 require_once("subject.php");
@@ -13,7 +14,7 @@ class ShowReviewCtrl {
     $title = $sb->getTitle($id);
     $review = $st->getReviewText($id);
 
-    $doc = load_html("showreview.html");
+    $doc = load_html("ShowReview.html");
     
     $sbj = $doc->xpath('//*[@id="title"]');
     $rev = $doc->xpath('//*[@id="text"]');
@@ -28,14 +29,17 @@ class ShowReviewCtrl {
     
   }
   public function close($id){
-    $sb = new Subject();
-    $sb.showList()
+    $sb = new SubjectListCtrl();
+    $sb->showList();
   }
 }
 
 $mt = new ShowReviewCtrl();
 //methodパラメータがmaketimetableの時に表示するっぽい
-echo $mt->show($_GET['id']);
-
+if ($_GET['id']){
+  echo $mt->show($_GET['id']);
+}else{
+  echo "<html>error:unknown_method</html>";
+}
 exit();
 ?>

@@ -32,9 +32,9 @@ class EditReviewCtrl {
     $doc = load_html2("review_create.html");
     $title = $doc->getElementById('title');
     $title->nodeValue = $sb->getTitle($id);
-    $this->id = $id
+    $this->id = $id;
     $html = $doc->saveHTML();
-    echo $html
+    echo $html;
     // $title_tag = $doc->xpath('//*[@id="title"]');
     // $title_tag->get
     // $title_tag[0]->addChild('h1',$sb->getTitle($id));
@@ -45,14 +45,14 @@ class EditReviewCtrl {
 
   public function save($id,$text){
     $st = new Student();
-    $st.setReviewText($id,$text)
+    $st->setReviewText($id,$text);
   }
 
   public function cancel(){
-     // ステータスコードを出力
-	http_response_code( 301 ) ;
-	// リダイレクト
-	header( "Location: ./SubjectListCtrl.php/?method=showList" ) ;
+    // ステータスコードを出力
+	  http_response_code( 301 ) ;
+	  // リダイレクト
+	  header( "Location: ./SubjectListCtrl.php/?method=showList" ) ;
   }
 
 }
@@ -62,9 +62,9 @@ $ERB = new EditReviewCtrl();
 if($_GET['method'] === "new"){
   // echo $ERB->new();
 }else if($_GET['method'] == "save"){
-  $ERB->save($this->id,$_POST["review"])
+  $ERB->save($this->id,$_POST["review"]);
 }else if($_GET['method'] == "cancel"){
-  $ERB->cancel()
+  $ERB->cancel();
 }else{
   echo "<html>error:unknown_method</html>";
 }

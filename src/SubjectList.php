@@ -1,6 +1,6 @@
+<?php include('./SubjectListCtl.php') ?>
 <!--科目一覧表示画面-->
 <html lang="ja">
-  <?php include('SubjectListCtl.php') ?>
   <head>
     <meta charset="utf-8" />
     <title>科目一覧表示</title>
