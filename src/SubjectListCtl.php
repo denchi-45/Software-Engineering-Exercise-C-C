@@ -9,28 +9,36 @@ require_once("student.php");
 // require_once("ShowReviewCtrl.php");
 //読み込んだhtmlファイルを組み立て
 class SubjectListCtrl {
-  // public function __construct() {}
+  private $st;
+  private $sb;
+  public function __construct() {
+    $this->st = new Student();
+    $this->sb = new Subject();
+  }
   public function showList() {
     // echo "EHHHHH";
     $doc = load_html("./subject_display.html");
-
-    $st = new Student();
-    $sb = new Subject();
     $sbj = $doc->xpath('//*[@id="subjects"]');
     
-    foreach($st->subjects() as $s){
+    foreach($this->st->subjects() as $s){
       // $sbj[0]->addChild('li', "<a herf=./showreview.html?subject=".$sb->getTitle($s).">".$sb->getTitle($s)."</a>");
       $li = $sbj[0]->addChild('li');
-      $tmp = $li->addChild('a', $sb->getTitle($s));
-      $tmp->addAttribute('href',"./showreview.php?id=".$s);
+      $tmp = $li->addChild('a', $this->sb->getTitle($s));
+      if($this->st->getReviewText($s) === "hello"){
+        $tmp->addAttribute('href',"./ShowListCtl.php?new_id=".$s);
+      }else{
+        $tmp->addAttribute('href',"./ShowListCtl.php?show_id=".$s);
+        $txt = $tmp->addChild('p',"レビューあり")
+      }
+      
 
     }
     echo $doc->asXML();
   }
 
   public function new($id){
-    // $erc = new EditReviewCtrl();
-    // $erc->new($id);
+    $erc = new EditReviewCtrl();
+    $erc->new($id);
 
     // $doc = load_html("subject_display.html");
 
@@ -51,7 +59,8 @@ class SubjectListCtrl {
 
   public function show($id){
       // $doc = load_html2("review_display.html");
-      // $SRC = new ShowReviewCtrl();
+      $SRC = new ShowReviewCtrl();
+      $SRC->show($id)
       // $subject = $SRC.getTitle($id);
       // $review = $SRC.getReviewText($id);
 
@@ -72,8 +81,10 @@ $mt = new SubjectListCtrl();
 // methodパラメータがmaketimetableの時に表示するっぽい
 if($_GET['method'] == "showList"){
   echo $mt->showList();
-}else if($_GET['id']){
-  $mt.show($_GET["id"]);
+}else if($_GET['show_id']){
+  $mt->show($_GET["id"]);
+}else if($_GET['new_id']){
+  $mt->new($_GET['new_id']);
 }else{
   echo "<html>error:unknown_method</html>";
 }

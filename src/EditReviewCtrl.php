@@ -45,7 +45,7 @@ class EditReviewCtrl {
 
   public function save($id,$text){
     $st = new Student();
-    $st.setReviewText($id,$text);
+    $st->setReviewText($id,$text);
   }
 
   public function cancel(){
@@ -68,6 +68,6 @@ class EditReviewCtrl {
 // }else{
 //   echo "<html>error:unknown_method</html>";
 // }
-exit();
+// exit();
 ?>
 
