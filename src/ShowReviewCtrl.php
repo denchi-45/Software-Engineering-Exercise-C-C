@@ -25,10 +25,11 @@ class ShowReviewCtrl {
     
   }
   public function edit($id){
-
+    
   }
   public function close($id){
-
+    $sb = new Subject();
+    $sb.showList()
   }
 }
 

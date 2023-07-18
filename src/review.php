@@ -1,7 +1,12 @@
 <?php
 class Review {
     private $subjectid;
-    private $text = "review";
+    private $text;
+    public function __construct($subjectid,$text) {
+        $this->subjectid = $subjectid
+        $this->text = $text
+    }
+    
     public function __construct() {
         // $this->subjectid = $id;
         // $this->text = $t;

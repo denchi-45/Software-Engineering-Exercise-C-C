@@ -1,9 +1,9 @@
 <?php
 //htmlをロードするファイル
-function load_html($file){
+function load_html2($file){
   $dom = new DOMDocument();
   $dom->loadHTMLFile($file);
-  return simplexml_import_dom($dom);
+  return $dom
 }
 
 ?>
