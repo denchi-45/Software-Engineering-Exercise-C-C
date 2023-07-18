@@ -1,4 +1,5 @@
 <?php 
+session_start();
 header('content-type: text/html; charset=utf-8');
 
 require_once("common.php");
@@ -12,7 +13,6 @@ class SubjectListCtrl {
   // private $st;
   // private $sb;
   public function __construct() {
-    session_start();
     $_SESSION['st'] = new Student();
     $_SESSION['sb'] = new Subject();
     // $this->st = new Student();

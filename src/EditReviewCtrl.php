@@ -8,7 +8,7 @@ require_once("review.php");
 
 // 読み込んだhtmlファイルを組み立て
 class EditReviewCtrl {
-  private $id;
+  public $id;
   // private $st = new Student();
   public function __construct() {
     session_start();
@@ -53,22 +53,24 @@ class EditReviewCtrl {
   }
 
   public function edit($id){
+    $this->id = $id;
     $doc = load_html2("review_create.html");
     $title = $doc->getElementById('title');
     $title->nodeValue = $_SESSION['sb']->getTitle($id);
-    $this->id = $id;
+    $review = $doc->getElementById('review');
+    $review->nodeValue = $_SESSION['st']->getReviewText($id);
     $html = $doc->saveHTML();
     echo $html;
   }
 }
 
-// $ERB = new EditReviewCtrl();
+$ERB = new EditReviewCtrl();
 // // //methodパラメータがmaketimetableの時に表示するっぽい
 // if($_GET['method'] === "new"){
 //   // echo $ERB->new();
 // }else 
 if($_GET['method'] == "save"){
-  $ERB->save($this->id,$_POST["review"]);
+  $ERB->save($ERB->id,$_POST["review"]);
 }
 // else if($_GET['method'] == "cancel"){
 //   $ERB->cancel();
