@@ -3,7 +3,7 @@ require_once("./review.php");
 
 class Student {
     private $ids = array(1,2,3,4,5);
-    private $reviews = array();
+    public $reviews = array();
     private $studentNo = 1;
     
     public function __construct(){
@@ -28,11 +28,8 @@ class Student {
     }
     public function setReviewText($id, $text){
         foreach ($this->reviews as $review){
-            if ($review->subjectId == $id){
-                // echo $id;
-                // echo "11111111111111111111111111111111111111111111111111111111111111";
-                // echo $this->reviews[$id];
-                // echo $this->reviews[$id]->getText();
+            if ($review->subjectid == $id){
+                $this->reviews[$id]->setText($text);
             }
         }
     }

@@ -10,35 +10,26 @@ class ShowReviewCtrl {
 
   public function __construct() {
     session_start();
-    // $_SESSION['st'] = new Student();
-    // $_SESSION['sb'] = new Subject();
   }
 
   public function show($id){
-    $title_content = $_SESSION['st']->getTitle($id);
-    $review_content = $_SESSION['sb']->getReviewText($id);
+    $st = unserialize($_SESSION['st']);
+    $sb = unserialize($_SESSION['sb']);
+    $title_content = $sb->getTitle($id);
+    $review_content = $st->getReviewText($id);
 
     $doc = load_html2("review_display.html");
     $title = $doc->getElementById('title');
     $title->nodeValue = $title_content;
 
+    $ID = $doc->getElementById('id');
+    $ID->setAttribute('value',$id);
+
     $review = $doc->getElementById('review');
     $review->nodeValue = $review_content;
-    
-
-    // $this->id = $id;
+  
     $html = $doc->saveHTML();
     echo $html;
-    
-    
-    // $sbj = $doc->xpath('//*[@id="title"]');
-    // $rev = $doc->xpath('//*[@id="text"]');
-    
-    // $sbj[0]->addChild('h1',$title);
-    // $rev[0]->addChild('textarea',$review);
-
-    // echo $doc->asXML();
-    
   }
   public function edit($id){
     $ed = new EditReviewCtrl();
@@ -58,6 +49,4 @@ if($_GET['method'] == "close"){
   $sr->edit($_GET['id']);
 }
 
-
-// exit();
 ?>

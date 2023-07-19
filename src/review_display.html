@@ -2,15 +2,15 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8" />
-        <title>レビュー表示</title> 
+        <title>Show Review</title> 
     </head>
     <body>
-        <h1 id="title">レビュー：</h1>
-        <form action="ShowReviewCtrl.php" method="post">
+        <h1 id="title">Review</h1>
+        <form action="EditReviewCtrl.php?method=save" method="post">
             <textarea cols="100" rows="10" name="review" id="review"></textarea><br>
-            <input type="hidden" name="id" value="1">
+            <input type="hidden" id="id" name="id">
             <input type="submit" value="edit">
         </form>
     </body>
-    <a href="./SubjectList.php/?method=showList">close</a>
+    <a href="./SubjectListCtl.php?method=showList">close</a>
 </html>

@@ -1,19 +1,14 @@
 <!--レビュー作成画面-->
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>--レビュー作成画面</title>
-    </head>
+<html>
     <body>
-        <h1>レビュー作成画面</h1>
+        <h1>Create Review</h1>
         <h1 id="title" />
         <form action="EditReviewCtrl.php?method=save" method="post">
             <textarea cols="100" rows="10" name="review" placeholder=""></textarea>
+            <input type="hidden" id="id" name="id">
             <input type="submit" value="save">
         </form>
-        <form action="EditReviewCtrl.php/?method=cancel" method="get">
-            <input type="submit">
-        </form>
+        <a href="EditReviewCtrl.php?method=cancel">close</a>
         
     </body>
 </html>
