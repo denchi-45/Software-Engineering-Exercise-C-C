@@ -26,13 +26,14 @@ class EditReviewCtrl {
   }
 
   public function save($id,$text){
+    // echo $id;
+    // echo $text;
     $st = unserialize($_SESSION['st']);
     $st->setReviewText($id,$text);
+
     $_SESSION['st'] = serialize($st);
     $st = unserialize($_SESSION['st']);
-    foreach($st->reviews as $review){
-      echo $review->getText();
-    }
+
   }
 
   public function cancel(){

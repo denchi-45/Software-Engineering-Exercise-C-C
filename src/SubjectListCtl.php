@@ -11,7 +11,13 @@ require_once("ShowReviewCtrl.php");
 //読み込んだhtmlファイルを組み立て
 class SubjectListCtrl {
   public function __construct() {
-    
+    //一番最初にこれやらなあかんかも
+      // $st = new Student();
+      // $_SESSION['st'] = serialize($st);
+
+      // $sb = new Subject();
+      // $_SESSION['sb'] = serialize($sb);
+
     if(!isset($_SESSION['st'])){
       $st = new Student();
       $_SESSION['st'] = serialize($st);
@@ -58,7 +64,6 @@ $mt = new SubjectListCtrl();
 if($_GET['method'] == "showList"){
   echo $mt->showList();
 }else if($_GET['show_id']){
-  echo $_GET['show_id'];
   $mt->show($_GET['show_id']);
 }else if($_GET['new_id']){
   $mt->new($_GET['new_id']);
