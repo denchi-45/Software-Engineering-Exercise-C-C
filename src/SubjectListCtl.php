@@ -11,7 +11,7 @@ require_once("ShowReviewCtrl.php");
 //読み込んだhtmlファイルを組み立て
 class SubjectListCtrl {
   public function __construct() {
-  
+    
     if(!isset($_SESSION['st'])){
       $st = new Student();
       $_SESSION['st'] = serialize($st);
