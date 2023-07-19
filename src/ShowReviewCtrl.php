@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 header('content-type: text/html; charset=utf-8');
 // require_once("common.php");
 require_once("common2.php");

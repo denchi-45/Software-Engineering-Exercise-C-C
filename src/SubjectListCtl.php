@@ -1,4 +1,5 @@
 <?php 
+// error_reporting(0);
 session_start();
 header('content-type: text/html; charset=utf-8');
 
